@@ -17,20 +17,65 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1 class="display-3">Making Tracks to Chuggington</h1>
+		<br>
 		<p class="lead">Honk your horns, Choo Choo! Choo Choo!</p>
 		<hr class="m-y-md">
 		<p class="create">Check out when your favorite Chuggington is arriving or add a new one!</p>
 	<!-- close jumbotron -->
 	</div>
-	<div class="row">
-	
-	<!-- end row 1 -->
+	<div class="panel panel-default">
+	  	<div class="panel-heading">Current Train Schedule</div>
+	  	<div class="panel-body">
+		<div class="table-responsive ">
+		  <table class="table table-hover table-striped">
+		    <thead>
+		      <tr>
+		        <th>Train Name</th>
+		        <th>Destination</th>
+		        <th>Frequency (min)</th>
+		        <th>Next Arrival</th>
+		        <th>Minutes Away</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>Koko</td>
+		        <td>Floral Park</td>
+		        <td>5</td>
+		        <td>06:00 AM</td>
+		        <td>2</td>
+		      </tr>
+		    </tbody>
+		  </table>
+		  </div>
+	  	</div>
 	</div>
+	<div class="panel panel-default">
+      	<div class="panel-heading">Clickity Clack! <br>Add a train on a track!</div>
+      	<div class="panel-body">  	
+	      	<label for="newName">Train Name</label>
+				<div class="input-group">
+				  <input type="text" class="form-control" id="newName">
+				</div>
 
-	<div class="row">
+			<label for="bnewDestination">Destination</label>
+				<div class="input-group">
+				  <input type="text" class="form-control" id="newDestination">
+				</div>
+			
+			<label for="newTime">First Train Time (HH:mm - military time)</label>
+				<div class="input-group">
+				  <input type="text" class="form-control" id="newTime">
+				</div>
 
-	<!-- end row 2 -->
-	</div>
+			<label for="newFreq">Frequency (min)</label>
+				<div class="input-group">
+				  <input type="text" class="form-control" id="newFreq">
+				</div>
+			<br>	
+			<input type="submit" value="Submit" class="btn btn-primary">
+		</div>
+    </div>
 <!-- end container -->
 </div>
 <!-- JQuery-->
