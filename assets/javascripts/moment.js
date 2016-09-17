@@ -27,5 +27,11 @@ var minutes = 0;
 $(".new").on("click", function(){
 	var newTrain = $("#newName").val().trim();
 	var newDest = $("#newDestination").val().trim();
-	var new
+	var newTime = $("#newTime").val().trim();
+	var newFreq = $("#newFreq").val().trim();
+	console.log(newTrain);
+	console.log(newDest);
+	console.log(newTime);
+	console.log(newFreq);
 });
+//add error message to say, "oh bumpers!"
