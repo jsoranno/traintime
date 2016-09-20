@@ -24,18 +24,10 @@ $('.btn').on('click', function(){
 	var newTime = $("#newTime").val().trim();
 	var newFreq = $("#newFreq").val().trim();
 	//tests to see if input captured
-	console.log(newName);
-	console.log(newDest);
-	console.log(newTime);
-	console.log(newFreq);
-
-	// var newTrain = {
-	// name:  newName,
-	// dest: newDest,
-	// start: newTime,
-	// freq: newFreq,
-	// dateAdded: firebase.database.ServerValue.TIMESTAMP
-	// }//close newTrain
+	// console.log(newName);
+	// console.log(newDest);
+	// console.log(newTime);
+	// console.log(newFreq);
 
 	dataRef.ref().push({
 		name:  newName,
@@ -60,7 +52,7 @@ $('.btn').on('click', function(){
 
 dataRef.ref().on("child_added", function(childSnapshot, prevChildKey) {
 	//test output
-	console.log(childSnapshot.val());
+	//console.log("childsnap" + childSnapshot.val());
 
 	var name = childSnapshot.val().name;
 	var dest = childSnapshot.val().dest;
@@ -68,15 +60,37 @@ dataRef.ref().on("child_added", function(childSnapshot, prevChildKey) {
 	var freq = childSnapshot.val().freq;
 
 	//calculate next arrival and minutes away here
+	//get current time and minus start time
+	var now = moment().toDate().getTime();
+	var newNow = moment(now).format("HH:mm EST");
+	//console.log(newNow); //this works. shows current time in HH:mm 24hr clock
+	// console.log(now); //this works. shows current time in unix 
+	// var diff = moment(now, "HH:mm").subtract(start, "HH:mm");
+	// //console.log(diff);
+	// var minAway = diff/freq;
+	// var nextTrain = minAway + newNow;
+	// //console.log(nextTrain);
+	// var newNextTrain = "next train";//moment().format(nextTrain, "mm");
+	// console.log(minAway);
+	// TRY AGAIN
+	// var unixStart = moment.unix(start);
+	// console.log(unixStart);
+	// var startPretty = moment.unix(start).format("HH:mm EST");
+	// trainDiff = moment(now).diff(start, "HH:mm EST");
+	// // console.log(trainDiff);
+	// var minAway = trainDiff / freq;
+	// console.log(minAway);
 
-	$(".tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + "next arrival" + "</td><td>" + "minutes away" + "</td></tr>");
+
+	$("#trainresults").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + "newNextTrain" + "</td><td>" + "minAway" + "</td></tr>");
 }, function(errorObject){
 	console.log("oh bumpers!"+ errorObject.code)
 
 });
 
-dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
-	// Change the HTML to reflect
-	$(".tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().dest + "</td><td>" + snapshot.val().freq + "</td><td>" + "next arrival" + "</td><td>" + "minutes away" + "</td></tr>");
 
-})
+// dataRef.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
+// 	// Change the HTML to reflect
+// 	$("#trainresults").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().dest + "</td><td>" + snapshot.val().freq + "</td><td>" + "next arrival" + "</td><td>" + "minutes away" + "</td></tr>");
+
+// })
