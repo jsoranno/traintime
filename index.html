@@ -8,9 +8,7 @@
 	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<!-- CSS -->
+<!-- CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,7 +22,10 @@
 	<!-- close jumbotron -->
 	</div>
 	<div class="panel panel-default">
-	  	<div class="panel-heading">Current Train Schedule</div>
+	  	<div class="panel-heading">
+	  		<h3 class="panel-title">Current Train Schedule</h3>
+	  	<!-- close panel heading -->
+	  	</div>
 	  	<div class="panel-body">
 		<div class="table-responsive">
 		  <table class="table table-hover table-striped trainSchedule">
@@ -47,41 +48,52 @@
 		      </tr>
 		    </tbody>
 		  </table>
+		  <!-- Close Table-Responsive -->
 		  </div>
+		 <!-- Close panel body -->
 	  	</div>
+	<!-- Close Panel -->
 	</div>
-	<div class="panel panel-default">
-      	<div class="panel-heading">Clickity Clack! <br>Add a train on a track!</div>
-      	<div class="panel-body">  	
-	      	<label for="newName">Train Name</label>
-				<div class="input-group">
-				  <input type="text" class="form-control" id="newName">
+	<div class="row">
+		<!-- New Train-->
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Clickity Clack! Add a New Train on the Track!</h3>
+				<!-- end panel heading -->
 				</div>
-
-			<label for="newDestination">Destination</label>
-				<div class="input-group">
-				  <input type="text" class="form-control" id="newDestination">
+				<div class="panel-body">
+			<!-- Form -->
+			<form role="form">
+				<div class="form-group">
+					<label for="text">Train Name:</label>
+					<input type="text" class="form-control" id="newName">
 				</div>
-			
-			<label for="newTime">First Train Time (HH:mm - military time)</label>
-				<div class="input-group">
-				  <input type="text" class="form-control" id="newTime">
+				<div class="form-group">
+					<label for="text">Destination:</label>
+					<input type="text" class="form-control" id="newDestination">
 				</div>
-
-			<label for="newFreq">Frequency (min)</label>
-				<div class="input-group">
-				  <input type="text" class="form-control" id="newFreq">
+				<div class="form-group">
+					<label for="text">First Train Time: (HH:mm)</label>
+					<input type="time" class="form-control" id="newTime">
 				</div>
-			<br>	
-			<input type="submit" value="Submit" class="new btn btn-primary">
+				<div class="form-group">
+					<label for="comment">Frequency: (minutes)</label>
+					<input type="number" class="form-control" id="newFreq">
+				</div>
+					<button class="btn btn-default" id="addTrain">Submit</button>
+			</form>
+			<!-- end panel -->
+			</div>
+		<!-- end col -->
 		</div>
-    </div>
+	<!-- end row -->
+	</div>
 <!-- end container -->
 </div>
 <!-- JQuery-->
-	<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Javascript -->	
 	<script type="text/javascript" src="assets/javascripts/moment.js"></script>	
