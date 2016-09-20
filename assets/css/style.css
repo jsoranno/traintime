@@ -1,3 +1,71 @@
+@font-face {
+	font-family: 'MediaGothic';
+	src: url('assets/fonts/mdgothic.ttf');
+}
 .jumbotron {
 	text-align: center;
+	font-family: 'MediaGothic';
+	margin-bottom: 0px;
+	height: 350px;
+	color: white;
+	text-shadow: black 0.3em 0.3em 0.3em;
+	background:transparent;
+	font-style: italic;
+	
 }
+.jumbotron img{
+	max-width:100%;
+	max-height:100%;
+	background: rgba(46, 51, 56, 0.2)!important;
+}
+body {
+	font-family: 'MediaGothic';
+	background-image: url("../images/back2.jpg");	    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+
+}
+h3{
+	color:white;
+}
+
+.panel{
+	color:white;
+	font-size: 18px;
+}
+/*.panel {
+	opacity: 50%;
+}*/
+.panel-transparent {
+        background: none;
+}
+
+.panel-transparent .panel-heading{
+    background: rgba(122, 130, 136, 0.5)!important;
+    color:white;
+
+}
+
+.panel-transparent .panel-body{
+    background: rgba(46, 51, 56, 0.5)!important;
+
+}
+h3.panel-title {
+    font-size: 24px;
+}
+.btn-lg {
+	border-radius: 24px;
+	background-color: #f83a2a;
+}
+.bg {
+  background: url('assets/images/back2.jpg') no-repeat center center;
+  position: fixed;
+  width: 100%;
+  height: 350px;
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+

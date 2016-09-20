@@ -13,22 +13,26 @@
 </head>
 <body>
 <div class="container">
+	<div class="bg">
+		<img src="assets/images/back2.jpg" alt="Chuggington Tracks">
+	</div>
 	<div class="jumbotron">
-		<h1 class="display-3">Making Tracks to Chuggington</h1>
+		<h1 class="display-3">Making Tracks to Chuggington!</h1>
+<!-- 		<img src="assets/images/ChuggingtonLogo.png" alt="Chuggington Tracks"> -->
 		<br>
 		<p class="lead">Honk your horns, Choo Choo! Choo Choo!</p>
 		<hr class="m-y-md">
 		<p class="create">Check out when your favorite Chugger is arriving, or add a new route!</p>
 	<!-- close jumbotron -->
 	</div>
-	<div class="panel panel-default">
+	<div class="panel panel-default panel-transparent">
 	  	<div class="panel-heading">
 	  		<h3 class="panel-title">Current Train Schedule</h3>
 	  	<!-- close panel heading -->
 	  	</div>
 	  	<div class="panel-body">
 		<div class="table-responsive">
-		  <table class="table table-hover table-striped trainSchedule">
+		  <table class="table trainSchedule">
 		    <thead>
 		      <tr>
 		        <th>Train Name</th>
@@ -57,7 +61,7 @@
 	<div class="row">
 		<!-- New Train-->
 		<div class="col-lg-6">
-			<div class="panel panel-default">
+			<div class="panel panel-default panel-transparent panel-responsive">
 				<div class="panel-heading">
 					<h3 class="panel-title">Clickity Clack! Add a New Train on the Track!</h3>
 				<!-- end panel heading -->
@@ -81,7 +85,7 @@
 					<label for="comment">Frequency: (minutes)</label>
 					<input type="number" class="form-control" id="newFreq">
 				</div>
-					<button class="btn btn-default" id="addTrain">Submit</button>
+					<button class="btn btn-lg" id="addTrain">Submit</button>
 			</form>
 			<!-- end panel -->
 			</div>

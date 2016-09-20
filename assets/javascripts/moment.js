@@ -94,3 +94,13 @@ dataRef.ref().on("child_added", function(childSnapshot, prevChildKey) {
 // 	$("#trainresults").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().dest + "</td><td>" + snapshot.val().freq + "</td><td>" + "next arrival" + "</td><td>" + "minutes away" + "</td></tr>");
 
 // })
+// var jumboHeight = $('.jumbotron').outerHeight();
+// function parallax(){
+//     var scrolled = $(window).scrollTop();
+//     $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+// }
+
+// $(window).scroll(function(e){
+//     parallax();
+// });
+
