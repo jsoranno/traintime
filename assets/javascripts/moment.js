@@ -1,3 +1,4 @@
+$(document).ready(function() {
   // Initialize Firebase
 var config = {
 	apiKey: "AIzaSyCxOaTKird9qLx2DzTh0-at1YwFUlUsimc",
@@ -28,6 +29,10 @@ $('.btn').on('click', function(){
 	// console.log(newDest);
 	// console.log(newTime);
 	// console.log(newFreq);
+	
+	// Convert initial time
+    // makes sure it comes before current time
+    newTime = moment(moment(newTime,"hh:mm A").subtract(1, "years"),"hh:mm").format("hh:mm A");
 
 	dataRef.ref().push({
 		name:  newName,
@@ -59,35 +64,63 @@ dataRef.ref().on("child_added", function(childSnapshot, prevChildKey) {
 	var start = childSnapshot.val().start;
 	var freq = childSnapshot.val().freq;
 
-	//calculate next arrival and minutes away here
-	//get current time and minus start time
-	var now = moment().toDate().getTime();
-	var newNow = moment(now).format("HH:mm EST");
-	//console.log(newNow); //this works. shows current time in HH:mm 24hr clock
-	// console.log(now); //this works. shows current time in unix 
-	// var diff = moment(now, "HH:mm").subtract(start, "HH:mm");
-	// //console.log(diff);
-	// var minAway = diff/freq;
-	// var nextTrain = minAway + newNow;
-	// //console.log(nextTrain);
-	// var newNextTrain = "next train";//moment().format(nextTrain, "mm");
-	// console.log(minAway);
-	// TRY AGAIN
-	// var unixStart = moment.unix(start);
-	// console.log(unixStart);
-	// var startPretty = moment.unix(start).format("HH:mm EST");
-	// trainDiff = moment(now).diff(start, "HH:mm EST");
-	// // console.log(trainDiff);
-	// var minAway = trainDiff / freq;
-	// console.log(minAway);
+// Calculate minutes away
+    var timeDifference = moment().diff(moment(start,"hh:mm A"),'m');
+    var timeRemaining = timeDifference % freq;
+    var timeMinsAway = freq - timeRemaining;
 
+    // Calculate next arrival
+    var timeNext = moment().add(timeMinsAway,'m');
 
-	$("#trainresults").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + "newNextTrain" + "</td><td>" + "minAway" + "</td></tr>");
+    // Set variables
+    var next = moment(timeNext).format("hh:mm A");
+    var away = timeMinsAway;
+  
+
+	$("#trainresults").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + next + "</td><td>" + away + "</td></tr>");
 }, function(errorObject){
 	console.log("oh bumpers!"+ errorObject.code)
 
-});
+}); //close child added
 
+function displayTime() {
+
+    var currentDay = moment().format("dddd, MMMM D YYYY,");
+
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    setInterval(displayTime, 1000);
+               
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+    var meridiem = "AM";
+
+    if (hours > 12) {
+        hours = hours - 12;
+        meridiem = "PM";
+    }
+
+    if (hours === 0) {
+        hours = 12;    
+    }
+
+    $('#currentTime').text(
+      currentDay + " " + 
+      hours + ":" + minutes + ":" + seconds + " " + meridiem);
+  }
+
+  displayTime();
+
+});//close doc ready
 
 // dataRef.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
 // 	// Change the HTML to reflect
