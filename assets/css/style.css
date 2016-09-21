@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'MediaGothic';
-	src: url('assets/fonts/mdgothic.ttf');
+	src: url('../fonts/mdgothic.ttf');
 }
 .jumbotron {
 	text-align: center;
