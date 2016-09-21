@@ -4,4 +4,4 @@ A JavaScript application that incorporates Firebase API to host name, location, 
 This app retrieves and manipulates this information with JavaScript and jQuery. 
 MomentJS library integration provides up-to date information about various trains, namely their departure times and how many minutes remain until the next train.
 ##Check it out!
-[Honk your horn!](chug-traintime.herokuapp.com "Chuggington Train Time Web App")
+chug-traintime.herokuapp.com 
