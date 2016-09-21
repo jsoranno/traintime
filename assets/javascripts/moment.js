@@ -114,7 +114,7 @@ function displayTime() {
     }
 
     $('#currentTime').text(
-      currentDay + " " + 
+      "Train Schedule as of " + currentDay + " " + 
       hours + ":" + minutes + ":" + seconds + " " + meridiem);
   }
 
