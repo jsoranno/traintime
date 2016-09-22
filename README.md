@@ -6,4 +6,4 @@ MomentJS library integration provides up-to date information about various train
 ##Check it out!
 chug-traintime.herokuapp.com 
 
-![screenshot](assets/images/ssChug.tiff)
+![screenshot](assets/images/ssChug.jpg)
