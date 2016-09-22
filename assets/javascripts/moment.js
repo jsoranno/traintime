@@ -1,12 +1,11 @@
-$(document).ready(function() {
-  // Initialize Firebase
+// Initialize Firebase
 var config = {
 	apiKey: "AIzaSyCxOaTKird9qLx2DzTh0-at1YwFUlUsimc",
 	authDomain: "chug-traintime.firebaseapp.com",
 	databaseURL: "https://chug-traintime.firebaseio.com",
-	storageBucket: "",
+	storageBucket: "chug-traintime.appspot.com",
 	messagingSenderId: "105595551581"
-}; // end config
+};
 	firebase.initializeApp(config);
 
 //initial variables
@@ -39,7 +38,6 @@ $('.btn').on('click', function(){
 		dest: newDest,
 		start: newTime,
 		freq: newFreq,
-		dateAdded: firebase.database.ServerValue.TIMESTAMP
 })
 	//test to see if added to database
 	// console.log(newTrain.name);
@@ -57,83 +55,41 @@ $('.btn').on('click', function(){
 
 dataRef.ref().on("child_added", function(childSnapshot, prevChildKey) {
 	//test output
-	//console.log("childsnap" + childSnapshot.val());
+	//console.log("childsnap" + childSnapshot.val().name); //console log shows names from Firebase
 
 	var name = childSnapshot.val().name;
 	var dest = childSnapshot.val().dest;
 	var start = childSnapshot.val().start;
 	var freq = childSnapshot.val().freq;
+	//console.log(name); //console log shows updated names
 
-// Calculate minutes away
+	// Calculate minutes away
     var timeDifference = moment().diff(moment(start,"hh:mm A"),'m');
     var timeRemaining = timeDifference % freq;
     var timeMinsAway = freq - timeRemaining;
+    //console.log("Time diff in minutes:" + timeDifference); 
+    //console.log("Time remaining before the next train:" + timeRemaining);
 
     // Calculate next arrival
     var timeNext = moment().add(timeMinsAway,'m');
+    //console.log("Minutes until the next train " + timeNext);
 
     // Set variables
     var next = moment(timeNext).format("hh:mm A");
+    console.log("Formatted minutes: " + next);
     var away = timeMinsAway;
+    console.log("Minutes away: " + away);
   
 
-	$("#trainresults").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + next + "</td><td>" + away + "</td></tr>");
+	$("#trainresults").append(
+		"<tr><td>" + name + 
+		"</td><td>" + dest + 
+		"</td><td>" + freq + 
+		"</td><td>" + next + 
+		"</td><td>" + away + 
+		"</td></tr>");
+
 }, function(errorObject){
 	console.log("oh bumpers!"+ errorObject.code)
 
 }); //close child added
-
-function displayTime() {
-
-    var currentDay = moment().format("dddd, MMMM D YYYY,");
-
-    var currentTime = new Date();
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
-
-    setInterval(displayTime, 1000);
-               
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    var meridiem = "AM";
-
-    if (hours > 12) {
-        hours = hours - 12;
-        meridiem = "PM";
-    }
-
-    if (hours === 0) {
-        hours = 12;    
-    }
-
-    $('#currentTime').text(
-      "Train Schedule as of " + currentDay + " " + 
-      hours + ":" + minutes + ":" + seconds + " " + meridiem);
-  }
-
-  displayTime();
-
-});//close doc ready
-
-// dataRef.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
-// 	// Change the HTML to reflect
-// 	$("#trainresults").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().dest + "</td><td>" + snapshot.val().freq + "</td><td>" + "next arrival" + "</td><td>" + "minutes away" + "</td></tr>");
-
-// })
-// var jumboHeight = $('.jumbotron').outerHeight();
-// function parallax(){
-//     var scrolled = $(window).scrollTop();
-//     $('.bg').css('height', (jumboHeight-scrolled) + 'px');
-// }
-
-// $(window).scroll(function(e){
-//     parallax();
-// });
-
